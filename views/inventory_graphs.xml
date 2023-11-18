@@ -12,5 +12,19 @@
         </field>
     </record>
 
+    <record model="ir.ui.view" id="inventory_data_pembelian_bahan_mentah_graph">
+        <field name="name">inventory.data.pembelian_bahan_mentah.graph</field>
+        <field name="model">inventory.data.pembelian_bahan_mentah</field>
+        <field name="arch" type="xml">
+            <graph string="Pembelian Bahan Mentah Graph">
+                <group expand="0" string="Satuan">
+                    <field name="unit"/>
+                    <field name="name" type="row"/>
+                    <field name="quantity" type="measure"/>
+                </group>
+            </graph>
+        </field>
+    </record>
+
 
 </odoo>

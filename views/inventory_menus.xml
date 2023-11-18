@@ -42,6 +42,12 @@
         <field name="view_mode">graph</field>
     </record>
 
+    <record id="action_list_report_pembelian_bahan_mentah" model="ir.actions.act_window">
+        <field name="name">Laporan Pembelian Bahan Mentah</field>
+        <field name="res_model">inventory.data.pembelian_bahan_mentah</field>
+        <field name="view_mode">graph</field>
+    </record>
+
     <menuitem id="inventory_root_menu" 
         name="Inventory Management"
         sequence="1"/>
@@ -92,6 +98,12 @@
         name="Laporan Makanan"
         parent="inventory_report_menu"
         action="action_list_report_makanan"
+        sequence="3"/>
+
+    <menuitem id="inventory_report_pembelian_bahan_mentah_menu" 
+        name="Laporan Pembelian Bahan Mentah"
+        parent="inventory_report_menu"
+        action="action_list_report_pembelian_bahan_mentah"
         sequence="3"/>
         
 </odoo>

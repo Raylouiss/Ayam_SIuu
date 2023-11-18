@@ -59,7 +59,12 @@ class Ketersediaan_Bahan(models.Model):
     @api.onchange('name')
     def onchange_name(self):
         if self.name:
-            setattr(self, 'unit', dict(self.name._fields['unit'].selection).get(self.name.type))
+            self.unit = dict(self.name._fields['unit'].selection).get(self.name.unit, False)
+    
+    @api.onchange('unit')
+    def onchange_unit(self):
+        if self.name and self.unit != dict(self.name._fields['unit'].selection).get(self.name.unit, False):
+            self.unit = dict(self.name._fields['unit'].selection).get(self.name.unit, False)
 
     @api.model
     def create(self, values):
@@ -85,7 +90,12 @@ class Pembelian_Bahan_Mentah(models.Model):
     @api.onchange('name')
     def onchange_name(self):
         if self.name:
-            setattr(self, 'unit', dict(self.name._fields['unit'].selection).get(self.name.type))
+            self.unit = dict(self.name._fields['unit'].selection).get(self.name.unit, False)
+    
+    @api.onchange('unit')
+    def onchange_unit(self):
+        if self.name and self.unit != dict(self.name._fields['unit'].selection).get(self.name.unit, False):
+            self.unit = dict(self.name._fields['unit'].selection).get(self.name.unit, False)
 
     @api.model
     def create(self, values):
@@ -110,7 +120,12 @@ class Produksi_Makanan_Siap_Saji(models.Model):
     @api.onchange('name')
     def onchange_name(self):
         if self.name:
-            setattr(self, 'unit', dict(self.name._fields['unit'].selection).get(self.name.type))
+            self.unit = dict(self.name._fields['unit'].selection).get(self.name.unit, False)
+    
+    @api.onchange('unit')
+    def onchange_unit(self):
+        if self.name and self.unit != dict(self._fields['unit'].selection).get(self.name.unit, False):
+            self.unit = dict(self.name._fields['unit'].selection).get(self.name.unit, False)
 
     @api.model
     def create(self, values):
