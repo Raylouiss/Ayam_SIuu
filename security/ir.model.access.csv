@@ -1,5 +1,5 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-inventory_data_manager,Inventory Data Manager,model_inventory_data,,1,0,1,0
+inventory_data_manager,Inventory Data Manager,model_inventory_data,,1,0,1,1
 inventory_data_makanan_manager,Inventory Data Makanan Manager,model_inventory_data_makanan,,1,1,1,1
 inventory_data_ketersediaan_bahan_manager,Inventory Data Ketersediaan Bahan Manager,model_inventory_data_ketersediaan_bahan,,1,1,1,1
 inventory_data_pembelian_bahan_mentah_manager,Inventory Data Pembelian Bahan Mentah Manager,model_inventory_data_pembelian_bahan_mentah,,1,1,1,1

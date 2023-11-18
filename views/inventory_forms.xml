@@ -15,7 +15,7 @@
             <field name="recipe"/>
             <field name="type"/>
             <field name="unit"/>
-            <field name="message" class="oe_edit_only"/>
+            <!-- <field name="message" class="oe_edit_only"/> -->
           </group>
         </sheet>
       </form>
@@ -30,12 +30,12 @@
       <form>
         <sheet>
           <group>
-            <field name="name"/>
+            <field name="name" attrs="{'readonly': [('id', '!=', False)]}"/>
             <field name="quantity"/>
             <field name="unit"/>
             <field name="storage"/>
             <field name="expire_date"/>
-            <field name="message" class="oe_edit_only"/>
+            <!-- <field name="message" class="oe_edit_only"/> -->
           </group>
         </sheet>
       </form>
@@ -55,7 +55,8 @@
             <field name="name"/>
             <field name="quantity"/>
             <field name="unit"/>
-            <field name="message" class="oe_edit_only"/>
+            <field name="price"/>
+            <!-- <field name="message" class="oe_edit_only"/> -->
           </group>
         </sheet>
       </form>
@@ -73,8 +74,9 @@
             <field name="name"/>
             <field name="quantity"/>
             <field name="unit"/>
+            <field name="price"/>
             <field name="date"/>
-            <field name="message" class="oe_edit_only"/>
+            <!-- <field name="message" class="oe_edit_only"/> -->
           </group>
         </sheet>
       </form>

@@ -8,8 +8,10 @@
     <field name="arch" type="xml">
       <tree default_order="timestamp desc" create="false">
         <field name="timestamp"/>
+        <field name="action"/>
         <field name="type"/>
-        <field name="message"/>
+        <field name="name"/>
+        <!-- <field name="message"/> -->
       </tree>
     </field>
   </record>
