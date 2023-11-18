@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+  <record model="ir.ui.view" id="inventory_data_makanan_form">
+    <field name="name">inventory.data.makanan.form</field>
+    <field name="model">inventory.data.makanan</field>
+    <field name="priority" eval="1"/>
+    <field name="arch" type="xml">
+      <form>
+        <sheet>
+          <group>
+            <field name="name"/>
+            <field name="color"/>
+            <field name="type"/>
+          </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
+
+  <record model="ir.ui.view" id="inventory_data_ketersediaan_bahan_form">
+    <field name="name">inventory.data.ketersediaan_bahan.form</field>
+    <field name="model">inventory.data.ketersediaan_bahan</field>
+    <field name="priority" eval="1"/>
+    <field name="arch" type="xml">
+      <form>
+        <sheet>
+          <group>
+            <field name="name"/>
+            <field name="color"/>
+            <field name="type"/>
+          </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
+
+  <record model="ir.ui.view" id="inventory_pembeliaan_bahan_mentah_form">
+    <field name="name">inventory.data.pembelian_bahan_mentah.form</field>
+    <field name="model">inventory.data.pembelian_bahan_mentah</field>
+    <field name="priority" eval="1"/>
+    <field name="arch" type="xml">
+      <form>
+        <sheet>
+          <group>
+            <field name="name"/>
+            <field name="color"/>
+            <field name="type"/>
+          </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
+
+  <record model="ir.ui.view" id="inventory_produksi_makanan_siap_saji_form">
+    <field name="name">inventory.data.produksi_makanan_siap_saji.form</field>
+    <field name="model">inventory.data.produksi_makanan_siap_saji</field>
+    <field name="priority" eval="1"/>
+    <field name="arch" type="xml">
+      <form>
+        <sheet>
+          <group>
+            <field name="name"/>
+            <field name="color"/>
+            <field name="type"/>
+          </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
+
+  <record model="ir.ui.view" id="inventory_report_form">
+    <field name="name">inventory.report.form</field>
+    <field name="model">inventory.report</field>
+    <field name="priority" eval="1"/>
+    <field name="arch" type="xml">
+      <form>
+        <sheet>
+          <group>
+            <field name="name"/>
+          </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
+  
+</odoo>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="action_list_data" model="ir.actions.act_window">
+        <field name="name">Daftar Data</field>
+        <field name="res_model">inventory.data</field>
+        <field name="view_mode">tree</field>
+    </record>
+
+    <record id="action_list_data_makanan" model="ir.actions.act_window">
+        <field name="name">Daftar Makanan</field>
+        <field name="res_model">inventory.data.makanan</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="action_list_data_ketersediaan_bahan" model="ir.actions.act_window">
+        <field name="name">Daftar Ketersediaan Bahan </field>
+        <field name="res_model">inventory.data.ketersediaan_bahan</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="action_list_data_pembelian_bahan_mentah" model="ir.actions.act_window">
+        <field name="name">Daftar Pembelian Bahan Mentah</field>
+        <field name="res_model">inventory.data.pembelian_bahan_mentah</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="action_list_data_produksi_makanan_siap_saji" model="ir.actions.act_window">
+        <field name="name">Daftar Produksi Makanan Siap Saji</field>
+        <field name="res_model">inventory.data.produksi_makanan_siap_saji</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="action_list_report" model="ir.actions.act_window">
+        <field name="name">Laporan</field>
+        <field name="res_model">inventory.report</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="inventory_root_menu" 
+        name="Inventory Management"
+        sequence="1"/>
+
+    <menuitem id="inventory_data_menu" 
+        name="Daftar Data"
+        parent="inventory_root_menu"
+        action="action_list_data"
+        sequence="1"/>
+
+    <menuitem id="inventory_report_menu" 
+        name="Laporan"
+        parent="inventory_root_menu"
+        action="action_list_report"
+        sequence="2"/>
+
+    <menuitem id="inventory_data_makanan_menu" 
+        name="Data Makanan"
+        parent="inventory_data_menu"
+        action="action_list_data_makanan"
+        sequence="3"/>
+
+    <menuitem id="inventory_data_ketersediaan_bahan_menu" 
+        name="Data Ketersediaan Bahan"
+        parent="inventory_data_menu"
+        action="action_list_data_ketersediaan_bahan"
+        sequence="3"/>
+    
+    <menuitem id="inventory_data_pembelian_bahan_mentah_menu" 
+        name="Data Pembelian Bahan Mentah"
+        parent="inventory_data_menu"
+        action="action_list_data_pembelian_bahan_mentah"
+        sequence="3"/>
+    
+    <menuitem id="inventory_data_produksi_makanan_siap_saji_menu" 
+        name="Data Produksi Makanan Siap Saji"
+        parent="inventory_data_menu"
+        action="action_list_data_produksi_makanan_siap_saji"
+        sequence="3"/>
+        
+</odoo>
