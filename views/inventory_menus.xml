@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
     <record id="action_list_data" model="ir.actions.act_window">
-        <field name="name">Daftar Data</field>
+        <field name="name">Daftar Logging</field>
         <field name="res_model">inventory.data</field>
         <field name="view_mode">tree</field>
     </record>

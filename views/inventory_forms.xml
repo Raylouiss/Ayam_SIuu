@@ -43,9 +43,11 @@
       <form>
         <sheet>
           <group>
+            <field name="supplier"/>
+            <field name="date"/>
             <field name="name"/>
-            <field name="color"/>
-            <field name="type"/>
+            <field name="quantity"/>
+            <field name="message"/>
           </group>
         </sheet>
       </form>

@@ -1,17 +1,21 @@
 # -*- coding: utf-8 -*-
 
 from odoo import models, fields, api
+from datetime import datetime
 
 
 class Data(models.Model):
     _name = 'inventory.data'
     _description = 'Deskripsi Data'
 
-    name = fields.Char(string="Nama", required=True)
-    color = fields.Selection(selection=[
-        ('0', 'Merah'), ('1', 'Kuning'), ('2', 'Hijau'), ('3', 'Biru'), ('4', 'Ungu'), 
-    ], string="Warna", required=True)
-    type = fields.Char(string="Jenis", required=True)
+    # name = fields.Char(string="Nama", required=True)
+    # color = fields.Selection(selection=[
+    #     ('0', 'Merah'), ('1', 'Kuning'), ('2', 'Hijau'), ('3', 'Biru'), ('4', 'Ungu'), 
+    # ], string="Warna", required=True)
+    # type = fields.Char(string="Jenis", required=True)
+    timestamp = fields.Datetime(string="Waktu", default=fields.Datetime.now)
+    type = fields.Char(string="Tipe data")
+    message = fields.Char(string="Pesan")
 
 class Makanan(models.Model):
     _name = 'inventory.data.makanan'
@@ -58,18 +62,18 @@ class Pembelian_Bahan_Mentah(models.Model):
     _description = 'Deskripsi Pembelian Bahan Mentah'
 
 
-    name = fields.Char(string="Nama", required=True)
-    color = fields.Selection(selection=[
-        ('0', 'Merah'), ('1', 'Kuning'), ('2', 'Hijau'), ('3', 'Biru'), ('4', 'Ungu'), 
-    ], string="Warna", required=True)
-    type = fields.Char(string="Jenis", required=True)
+    supplier = fields.Char(string="Pemasok", required=True)
+    date = fields.Date(string="Date")
+    name = fields.Char(string="Makanan")
+    quantity = fields.Integer(string="Jumlah", default=1)
+    message = fields.Char(string="Keterangan")
 
     @api.model
     def create(self, values):
         self.env['inventory.data'].create({
-            'name': values.get('name'),
-            'color': values.get('color'),
-            'type': values.get('type'),
+            'timestamp': datetime.now(),
+            'type': "Pembelian bahan mentah",
+            'message': values.get('message'),
         })
         return super(Pembelian_Bahan_Mentah, self).create(values)
 
