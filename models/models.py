@@ -82,18 +82,17 @@ class Produksi_Makanan_Siap_Saji(models.Model):
     _description = 'Deskripsi Produksi Makanan Siap Saji'
 
 
-    name = fields.Char(string="Nama", required=True)
-    color = fields.Selection(selection=[
-        ('0', 'Merah'), ('1', 'Kuning'), ('2', 'Hijau'), ('3', 'Biru'), ('4', 'Ungu'), 
-    ], string="Warna", required=True)
-    type = fields.Char(string="Jenis", required=True)
+    name = fields.Char(string="Makanan")
+    quantity = fields.Integer(string="Jumlah", default=1)
+    date = fields.Date(string="Date")
+    message = fields.Char(string="Keterangan")
 
     @api.model
     def create(self, values):
         self.env['inventory.data'].create({
-            'name': values.get('name'),
-            'color': values.get('color'),
-            'type': values.get('type'),
+            'timestamp': datetime.now(),
+            'type': "Produksi Makanan Siap Saji",
+            'message': values.get('message'),
         })
         return super(Produksi_Makanan_Siap_Saji, self).create(values)
 

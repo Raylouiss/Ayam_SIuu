@@ -45,7 +45,7 @@
     <field name="model">inventory.data.pembelian_bahan_mentah</field>
     <field name="priority" eval="1"/>
     <field name="arch" type="xml">
-      <tree>
+      <tree default_order="date desc, supplier">
         <field name="supplier"/>
         <field name="date"/>
         <field name="name"/>
@@ -59,10 +59,10 @@
     <field name="model">inventory.data.produksi_makanan_siap_saji</field>
     <field name="priority" eval="1"/>
     <field name="arch" type="xml">
-      <tree>
+      <tree default_order="date desc, name">
         <field name="name"/>
-        <field name="color"/>
-        <field name="type"/>
+        <field name="quantity"/>
+        <field name="date"/>
       </tree>
     </field>
   </record>
