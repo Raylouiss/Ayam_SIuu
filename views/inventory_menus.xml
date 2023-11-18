@@ -51,6 +51,12 @@
         parent="inventory_root_menu"
         action="action_list_report"
         sequence="2"/>
+    
+    <menuitem id="inventory_data_logging_menu" 
+        name="Daftar Logging"
+        parent="inventory_data_menu"
+        action="action_list_data"
+        sequence="3"/>
 
     <menuitem id="inventory_data_makanan_menu" 
         name="Data Makanan"

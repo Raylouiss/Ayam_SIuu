@@ -8,14 +8,9 @@ class Data(models.Model):
     _name = 'inventory.data'
     _description = 'Deskripsi Data'
 
-    # name = fields.Char(string="Nama", required=True)
-    # color = fields.Selection(selection=[
-    #     ('0', 'Merah'), ('1', 'Kuning'), ('2', 'Hijau'), ('3', 'Biru'), ('4', 'Ungu'), 
-    # ], string="Warna", required=True)
-    # type = fields.Char(string="Jenis", required=True)
     timestamp = fields.Datetime(string="Waktu", default=fields.Datetime.now)
     type = fields.Char(string="Tipe data")
-    message = fields.Char(string="Pesan")
+    message = fields.Text(string="Pesan")
 
 class Makanan(models.Model):
     _name = 'inventory.data.makanan'
@@ -23,17 +18,30 @@ class Makanan(models.Model):
 
 
     name = fields.Char(string="Nama", required=True)
-    color = fields.Selection(selection=[
-        ('0', 'Merah'), ('1', 'Kuning'), ('2', 'Hijau'), ('3', 'Biru'), ('4', 'Ungu'), 
-    ], string="Warna", required=True)
-    type = fields.Char(string="Jenis", required=True)
+    expired = fields.Integer(string="Lama Kadaluarsa(Hari)", default=1, required=True)
+    price = fields.Monetary(string="Harga(Rp)", required=True, default=1000, currency_field='currency_id')
+    recipe = fields.Text(string="Resep", required=True)
+    type = fields.Selection(selection=[
+        ('0', 'Data Bahan Mentah'), ('1', 'Data Bahan Setengah Matang'), ('2', 'Data Makanan Siap Saji') 
+    ], string="Tipe Makanan", required=True, create=False)
+    unit = fields.Selection(selection=[
+        ('0', 'Kilogram'), ('1', 'Gram'), ('2', 'Buah') ,('3', 'Siung') 
+    ], string="Satuan", required=True)
+    message = fields.Text(string="Pesan")
+
+    currency_id = fields.Many2one(
+        'res.currency',
+        string='Currency',
+        default=lambda self: self.env['res.currency'].search([('name', '=', 'IDR')], limit=1),
+        readonly=True,
+    )
 
     @api.model
     def create(self, values):
         self.env['inventory.data'].create({
-            'name': values.get('name'),
-            'color': values.get('color'),
-            'type': values.get('type'),
+            'timestamp': datetime.now(),
+            'type': "Makanan",
+            'message': values.get('message'),
         })
         return super(Makanan, self).create(values)
 
@@ -41,19 +49,24 @@ class Ketersediaan_Bahan(models.Model):
     _name = 'inventory.data.ketersediaan_bahan'
     _description = 'Deskripsi Ketersediaan Bahan'
 
+    name = fields.Many2one('inventory.data.makanan', string="Makanan", domain=[('type', 'in', ['0', '1'])], required=True)
+    quantity = fields.Integer(string="Jumlah", default=1, required=True)
+    unit = fields.Char(string="Satuan", required=True)
+    storage = fields.Char(string="Tempat Penyimpanan", required=True)
+    expire_date = fields.Date(string="Tanggal", required=True)
+    message = fields.Text(string="Pesan")
 
-    name = fields.Char(string="Nama", required=True)
-    color = fields.Selection(selection=[
-        ('0', 'Merah'), ('1', 'Kuning'), ('2', 'Hijau'), ('3', 'Biru'), ('4', 'Ungu'), 
-    ], string="Warna", required=True)
-    type = fields.Char(string="Jenis", required=True)
+    @api.onchange('name')
+    def onchange_name(self):
+        if self.name:
+            setattr(self, 'unit', dict(self.name._fields['unit'].selection).get(self.name.type))
 
     @api.model
     def create(self, values):
         self.env['inventory.data'].create({
-            'name': values.get('name'),
-            'color': values.get('color'),
-            'type': values.get('type'),
+            'timestamp': datetime.now(),
+            'type': "Ketersediaan Bahan",
+            'message': values.get('message'),
         })
         return super(Ketersediaan_Bahan, self).create(values)
 
@@ -63,10 +76,16 @@ class Pembelian_Bahan_Mentah(models.Model):
 
 
     supplier = fields.Char(string="Pemasok", required=True)
-    date = fields.Date(string="Date")
-    name = fields.Char(string="Makanan")
-    quantity = fields.Integer(string="Jumlah", default=1)
-    message = fields.Char(string="Keterangan")
+    date = fields.Date(string="Tanggal", required=True)
+    name = fields.Many2one('inventory.data.makanan', string="Makanan", domain=[('type', '=', '0')], required=True)
+    unit = fields.Char(string="Satuan", required=True)
+    quantity = fields.Integer(string="Jumlah", default=1, required=True)
+    message = fields.Text(string="Pesan")
+
+    @api.onchange('name')
+    def onchange_name(self):
+        if self.name:
+            setattr(self, 'unit', dict(self.name._fields['unit'].selection).get(self.name.type))
 
     @api.model
     def create(self, values):
@@ -82,10 +101,16 @@ class Produksi_Makanan_Siap_Saji(models.Model):
     _description = 'Deskripsi Produksi Makanan Siap Saji'
 
 
-    name = fields.Char(string="Makanan")
-    quantity = fields.Integer(string="Jumlah", default=1)
-    date = fields.Date(string="Date")
-    message = fields.Char(string="Keterangan")
+    name = fields.Many2one('inventory.data.makanan', string="Makanan", domain=[('type', '=', '2')], required=True)
+    quantity = fields.Integer(string="Jumlah", default=1, required=True)
+    unit = fields.Char(string="Satuan", required=True)
+    date = fields.Date(string="Tanggal", required=True)
+    message = fields.Char(string="Pesan")
+
+    @api.onchange('name')
+    def onchange_name(self):
+        if self.name:
+            setattr(self, 'unit', dict(self.name._fields['unit'].selection).get(self.name.type))
 
     @api.model
     def create(self, values):

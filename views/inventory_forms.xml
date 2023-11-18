@@ -10,8 +10,12 @@
         <sheet>
           <group>
             <field name="name"/>
-            <field name="color"/>
+            <field name="expired"/>
+            <field name="price"/>
+            <field name="recipe"/>
             <field name="type"/>
+            <field name="unit"/>
+            <field name="message" class="oe_edit_only"/>
           </group>
         </sheet>
       </form>
@@ -27,8 +31,11 @@
         <sheet>
           <group>
             <field name="name"/>
-            <field name="color"/>
-            <field name="type"/>
+            <field name="quantity"/>
+            <field name="unit"/>
+            <field name="storage"/>
+            <field name="expire_date"/>
+            <field name="message" class="oe_edit_only"/>
           </group>
         </sheet>
       </form>
@@ -47,7 +54,8 @@
             <field name="date"/>
             <field name="name"/>
             <field name="quantity"/>
-            <field name="message"/>
+            <field name="unit"/>
+            <field name="message" class="oe_edit_only"/>
           </group>
         </sheet>
       </form>
@@ -64,8 +72,9 @@
           <group>
             <field name="name"/>
             <field name="quantity"/>
+            <field name="unit"/>
             <field name="date"/>
-            <field name="message"/>
+            <field name="message" class="oe_edit_only"/>
           </group>
         </sheet>
       </form>

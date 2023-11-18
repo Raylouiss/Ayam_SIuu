@@ -6,7 +6,7 @@
     <field name="model">inventory.data</field>
     <field name="priority" eval="1"/>
     <field name="arch" type="xml">
-      <tree default_order="timestamp desc">
+      <tree default_order="timestamp desc" create="false">
         <field name="timestamp"/>
         <field name="type"/>
         <field name="message"/>
@@ -19,10 +19,13 @@
     <field name="model">inventory.data.makanan</field>
     <field name="priority" eval="1"/>
     <field name="arch" type="xml">
-      <tree>
+      <tree default_order="name">
         <field name="name"/>
-        <field name="color"/>
+        <field name="expired"/>
+        <field name="price"/>
+        <field name="recipe"/>
         <field name="type"/>
+        <field name="unit"/>
       </tree>
     </field>
   </record>
@@ -32,10 +35,12 @@
     <field name="model">inventory.data.ketersediaan_bahan</field>
     <field name="priority" eval="1"/>
     <field name="arch" type="xml">
-      <tree>
-        <field name="name"/>
-        <field name="color"/>
-        <field name="type"/>
+      <tree default_order="name">
+          <field name="name"/>
+          <field name="quantity"/>
+          <field name="unit"/>
+          <field name="storage"/>
+          <field name="expire_date"/>
       </tree>
     </field>
   </record>
@@ -50,6 +55,7 @@
         <field name="date"/>
         <field name="name"/>
         <field name="quantity"/>
+        <field name="unit"/>
       </tree>
     </field>
   </record>
@@ -62,6 +68,7 @@
       <tree default_order="date desc, name">
         <field name="name"/>
         <field name="quantity"/>
+        <field name="unit"/>
         <field name="date"/>
       </tree>
     </field>
