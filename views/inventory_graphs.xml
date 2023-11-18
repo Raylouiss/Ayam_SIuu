@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record model="ir.ui.view" id="inventory_data_makanan_graph">
+        <field name="name">inventory.data.makanan.graph</field>
+        <field name="model">inventory.data.makanan</field>
+        <field name="arch" type="xml">
+            <graph string="Makanan Graph">
+                <field name="type" type="row"/>
+                <field name="id" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+
+</odoo>

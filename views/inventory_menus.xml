@@ -36,6 +36,12 @@
         <field name="view_mode">tree,form</field>
     </record>
 
+    <record id="action_list_report_makanan" model="ir.actions.act_window">
+        <field name="name">Laporan Makanan</field>
+        <field name="res_model">inventory.data.makanan</field>
+        <field name="view_mode">graph</field>
+    </record>
+
     <menuitem id="inventory_root_menu" 
         name="Inventory Management"
         sequence="1"/>
@@ -80,6 +86,12 @@
         name="Data Produksi Makanan Siap Saji"
         parent="inventory_data_menu"
         action="action_list_data_produksi_makanan_siap_saji"
+        sequence="3"/>
+    
+    <menuitem id="inventory_report_makanan_menu" 
+        name="Laporan Makanan"
+        parent="inventory_report_menu"
+        action="action_list_report_makanan"
         sequence="3"/>
         
 </odoo>
