@@ -1,17 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
 
-    <record model="ir.ui.view" id="inventory_data_makanan_graph">
-        <field name="name">inventory.data.makanan.graph</field>
-        <field name="model">inventory.data.makanan</field>
-        <field name="arch" type="xml">
-            <graph string="Makanan Graph">
-                <field name="type" type="row"/>
-                <field name="id" type="measure"/>
-            </graph>
-        </field>
-    </record>
-
     <record model="ir.ui.view" id="inventory_data_pembelian_bahan_mentah_graph">
         <field name="name">inventory.data.pembelian_bahan_mentah.graph</field>
         <field name="model">inventory.data.pembelian_bahan_mentah</field>
@@ -21,6 +10,22 @@
                     <field name="unit"/>
                     <field name="name" type="row"/>
                     <field name="quantity" type="measure"/>
+                    <field name="expense" type="measure"/>
+                </group>
+            </graph>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="inventory_data_produksi_makanan_siap_saji_graph">
+        <field name="name">inventory.data.produksi.makanan.siap.saji.graph</field>
+        <field name="model">inventory.data.produksi.makanan.siap.saji</field>
+        <field name="arch" type="xml">
+            <graph string="Pembelian Bahan Mentah Graph">
+                <group expand="0" string="Satuan">
+                    <field name="unit"/>
+                    <field name="name" type="row"/>
+                    <field name="quantity" type="measure"/>
+                    <field name="profit" type="measure"/>
                 </group>
             </graph>
         </field>

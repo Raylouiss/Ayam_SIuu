@@ -58,6 +58,8 @@
         <field name="name"/>
         <field name="quantity"/>
         <field name="unit"/>
+        <field name="price"/>
+        <field name="expense"/>
       </tree>
     </field>
   </record>
@@ -71,7 +73,9 @@
         <field name="name"/>
         <field name="quantity"/>
         <field name="unit"/>
+        <field name="price"/>
         <field name="date"/>
+        <field name="profit"/>
       </tree>
     </field>
   </record>

@@ -36,15 +36,15 @@
         <field name="view_mode">tree,form</field>
     </record>
 
-    <record id="action_list_report_makanan" model="ir.actions.act_window">
-        <field name="name">Laporan Makanan</field>
-        <field name="res_model">inventory.data.makanan</field>
+    <record id="action_list_report_pengeluaran" model="ir.actions.act_window">
+        <field name="name">Laporan Pengeluaran</field>
+        <field name="res_model">inventory.data.pembelian_bahan_mentah</field>
         <field name="view_mode">graph</field>
     </record>
 
-    <record id="action_list_report_pembelian_bahan_mentah" model="ir.actions.act_window">
-        <field name="name">Laporan Pembelian Bahan Mentah</field>
-        <field name="res_model">inventory.data.pembelian_bahan_mentah</field>
+    <record id="action_list_report_pendapatan" model="ir.actions.act_window">
+        <field name="name">Laporan Pendapatan</field>
+        <field name="res_model">inventory.data.produksi_makanan_siap_saji</field>
         <field name="view_mode">graph</field>
     </record>
 
@@ -68,7 +68,7 @@
         name="Daftar Logging"
         parent="inventory_data_menu"
         action="action_list_data"
-        sequence="3"/>
+        sequence="2"/>
 
     <menuitem id="inventory_data_makanan_menu" 
         name="Data Makanan"
@@ -93,17 +93,15 @@
         parent="inventory_data_menu"
         action="action_list_data_produksi_makanan_siap_saji"
         sequence="3"/>
-    
-    <menuitem id="inventory_report_makanan_menu" 
-        name="Laporan Makanan"
+    <menuitem id="inventory_report_pengeluaran" 
+        name="Laporan Pengeluaran"
         parent="inventory_report_menu"
-        action="action_list_report_makanan"
+        action="action_list_report_pengeluaran"
         sequence="3"/>
-
-    <menuitem id="inventory_report_pembelian_bahan_mentah_menu" 
-        name="Laporan Pembelian Bahan Mentah"
+    <menuitem id="inventory_report_pendapatan" 
+        name="Laporan Pendapatan"
         parent="inventory_report_menu"
-        action="action_list_report_pembelian_bahan_mentah"
+        action="action_list_report_pendapatan"
         sequence="3"/>
         
 </odoo>

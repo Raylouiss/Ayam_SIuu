@@ -208,6 +208,7 @@ class Pembelian_Bahan_Mentah(models.Model):
     unit = fields.Char(string="Satuan", required=True)
     price = fields.Monetary(string="Harga(Rp)", required=True, currency_field='currency_id')
     quantity = fields.Integer(string="Jumlah", default=1, required=True)
+    expense = fields.Float(string="Pengeluaran")
     # message = fields.Text(string="Pesan")
 
     currency_id = fields.Many2one(
@@ -216,7 +217,11 @@ class Pembelian_Bahan_Mentah(models.Model):
         default=lambda self: self.env['res.currency'].search([('name', '=', 'IDR')], limit=1),
         readonly=True,
     )
-
+    @api.onchange('price', 'quantity')
+    def onchange_expense(self):
+        if self.name and self.price != self.name.price:
+            self.price = self.name.price
+        self.expense = self.price * self.quantity
     @api.onchange('name')
     def onchange_name(self):
         if self.name and self.name.type not in ['0']:
@@ -230,14 +235,16 @@ class Pembelian_Bahan_Mentah(models.Model):
     def onchange_unit(self):
         if self.name and self.unit != dict(self.name._fields['unit'].selection).get(self.name.unit, False):
             self.unit = dict(self.name._fields['unit'].selection).get(self.name.unit, False)
+        self.expense = self.price * self.quantity
     
-    @api.onchange('price')
-    def onchange_price(self):
-        if self.name and self.price != self.name.price:
-            self.price = self.name.price
-
+    # @api.onchange('price')
+    # def onchange_price(self):
+    #     if self.name and self.price != self.name.price:
+    #         self.price = self.name.price
+            
     @api.model
     def create(self, values):
+
         name = self.env['inventory.data.makanan'].browse(values.get('name')).name
         self.env['inventory.data'].create({
             'timestamp': datetime.now(),
@@ -293,6 +300,7 @@ class Produksi_Makanan_Siap_Saji(models.Model):
     unit = fields.Char(string="Satuan", default="Buah", readonly= True, required=True)
     price = fields.Monetary(string="Harga(Rp)", required=True, currency_field='currency_id')
     date = fields.Date(string="Tanggal", required=True)
+    profit = fields.Float(string="Keuntungan")
     # message = fields.Char(string="Pesan")
 
     currency_id = fields.Many2one(
@@ -313,10 +321,11 @@ class Produksi_Makanan_Siap_Saji(models.Model):
         # if self.name:
         #     self.unit = dict(self.name._fields['unit'].selection).get(self.name.unit, False)
     
-    # @api.onchange('unit')
-    # def onchange_unit(self):
-    #     if self.name and self.unit != dict(self._fields['unit'].selection).get(self.name.unit, False):
-    #         self.unit = dict(self.name._fields['unit'].selection).get(self.name.unit, False)
+    @api.onchange('price', 'quantity')
+    def onchange_profit(self):
+        if self.name and self.price != self.name.price:
+            self.price = self.name.price
+        self.profit = self.price * self.quantity
 
     @api.onchange('price')
     def onchange_price(self):
