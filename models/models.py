@@ -18,6 +18,9 @@ class Makanan(models.Model):
     _name = 'inventory.data.makanan'
     _description = 'Deskripsi Makanan'
 
+    _sql_constraints = [
+        ('unique_name', 'unique(name)', "A makanan already exists with this name. Makanan's name must be unique!"),
+    ]
 
     name = fields.Char(string="Nama", required=True, unique=True)
     expired = fields.Integer(string="Lama Kadaluarsa(Hari)", default=1, required=True)
@@ -112,6 +115,11 @@ class Makanan(models.Model):
 class Ketersediaan_Bahan(models.Model):
     _name = 'inventory.data.ketersediaan_bahan'
     _description = 'Deskripsi Ketersediaan Bahan'
+
+    _sql_constraints = [
+        ('unique_name_storage_expired', 'unique(name, storage, expire_date)',
+         "A Ketersediaan Bahan with the same name, storage location, and expiration date already exists. Ketersediaan Bahan's name, storage location, and expiration date must be unique!"),
+    ]
 
     name = fields.Many2one('inventory.data.makanan', string="Makanan", domain=[('type', 'in', ['0', '1'])], required=True, ondelete='cascade')
     quantity = fields.Integer(string="Jumlah", default=1, required=True)
