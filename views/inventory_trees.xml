@@ -79,16 +79,5 @@
       </tree>
     </field>
   </record>
-
-  <record model="ir.ui.view" id="inventory_report_tree">
-    <field name="name">inventory.report.tree</field>
-    <field name="model">inventory.report</field>
-    <field name="priority" eval="1"/>
-    <field name="arch" type="xml">
-      <tree>
-        <field name="name"/>
-      </tree>
-    </field>
-  </record>
   
 </odoo>

@@ -84,20 +84,5 @@
       </form>
     </field>
   </record>
-
-  <record model="ir.ui.view" id="inventory_report_form">
-    <field name="name">inventory.report.form</field>
-    <field name="model">inventory.report</field>
-    <field name="priority" eval="1"/>
-    <field name="arch" type="xml">
-      <form>
-        <sheet>
-          <group>
-            <field name="name"/>
-          </group>
-        </sheet>
-      </form>
-    </field>
-  </record>
   
 </odoo>

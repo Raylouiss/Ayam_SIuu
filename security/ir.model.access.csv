@@ -4,4 +4,3 @@ inventory_data_makanan_manager,Inventory Data Makanan Manager,model_inventory_da
 inventory_data_ketersediaan_bahan_manager,Inventory Data Ketersediaan Bahan Manager,model_inventory_data_ketersediaan_bahan,,1,1,1,1
 inventory_data_pembelian_bahan_mentah_manager,Inventory Data Pembelian Bahan Mentah Manager,model_inventory_data_pembelian_bahan_mentah,,1,1,1,1
 inventory_data_produksi_makanan_siap_saji_manager,Inventory Data Produksi Makanan Siap Saji Manager,model_inventory_data_produksi_makanan_siap_saji,,1,1,1,1
-inventory_report_manager,Inventory Report Manager,model_inventory_report,,1,1,1,1

@@ -30,12 +30,6 @@
         <field name="view_mode">tree,form</field>
     </record>
 
-    <record id="action_list_report" model="ir.actions.act_window">
-        <field name="name">Laporan</field>
-        <field name="res_model">inventory.report</field>
-        <field name="view_mode">tree,form</field>
-    </record>
-
     <record id="action_list_report_pengeluaran" model="ir.actions.act_window">
         <field name="name">Laporan Pengeluaran</field>
         <field name="res_model">inventory.data.pembelian_bahan_mentah</field>
@@ -55,17 +49,17 @@
     <menuitem id="inventory_data_menu" 
         name="Daftar Data"
         parent="inventory_root_menu"
-        action="action_list_data"
+        action=""
         sequence="1"/>
 
     <menuitem id="inventory_report_menu" 
         name="Laporan"
         parent="inventory_root_menu"
-        action="action_list_report"
+        action=""
         sequence="2"/>
     
     <menuitem id="inventory_data_logging_menu" 
-        name="Daftar Logging"
+        name="Data Logging"
         parent="inventory_data_menu"
         action="action_list_data"
         sequence="2"/>
